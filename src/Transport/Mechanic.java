@@ -1,5 +1,7 @@
 package Transport;
 
+import java.util.Objects;
+
 public class Mechanic {
     private String name;
     private String company;
@@ -42,5 +44,18 @@ public class Mechanic {
                 " из компании " + company +
                 ". Ремонтирует " + typeTransport
                 ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic mechanic = (Mechanic) o;
+        return Objects.equals(name, mechanic.name) && Objects.equals(company, mechanic.company) && typeTransport == mechanic.typeTransport;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, company, typeTransport);
     }
 }
